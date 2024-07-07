@@ -2,10 +2,12 @@ import { Smile } from "lucide-react";
 import React from "react";
 import { Slider } from "@/components/ui/slider";
 import { useState } from "react";
+import ColorPickerController from "./ColorPickerController";
 
 const IconController = () => {
   const [size, setSize] = useState(280);
   const [rotate, setRotate] = useState(0);
+  const [color, setColor] = useState('#fff')
   return (
     <div className="bg-white">
       <div>
@@ -40,6 +42,12 @@ const IconController = () => {
             step={1}
             onValueChange={(e) => setRotate(e[0])}
           />
+        </div>
+        <div className="py-2">
+          <label className="py-2 flex justify-between items-center">
+         Color Picker
+          </label>
+        <ColorPickerController hideController = {true} selectedColor = {(color) => setColor(color)}/>
         </div>
       </div>
     </div>
