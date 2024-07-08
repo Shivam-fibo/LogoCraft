@@ -3,11 +3,25 @@ import React from "react";
 import { Slider } from "@/components/ui/slider";
 import { useState } from "react";
 import ColorPickerController from "./ColorPickerController";
+import { useEffect } from "react";
 
 const IconController = () => {
   const [size, setSize] = useState(280);
   const [rotate, setRotate] = useState(0);
-  const [color, setColor] = useState('#fff')
+  const [color, setColor] = useState("#fff");
+  const storageValue = JSON.parse(localStorage.getItem('value'))
+  useEffect(() =>{
+        const updateValue = {
+          ...storageValue,
+          iconSize: size,
+          iconRotate : rotate,
+          iconColor : color,
+          icon: 'Smile'
+        }
+        localStorage.setItem('value', JSON.stringify(updateValue ))
+
+      }, [size, rotate, color])
+
   return (
     <div className="bg-white">
       <div>
@@ -30,10 +44,10 @@ const IconController = () => {
             onValueChange={(e) => setSize(e[0])}
           />
         </div>
-          {/* rotate */}
+        {/* rotate */}
         <div className="py-2">
           <label className="py-2 flex justify-between items-center">
-          Rotate <span>{rotate} °</span>{" "}
+            Rotate <span>{rotate} °</span>{" "}
           </label>
           <Slider
             className="bg-gray-100"
@@ -45,9 +59,12 @@ const IconController = () => {
         </div>
         <div className="py-2">
           <label className="py-2 flex justify-between items-center">
-         Color Picker
+            Color Picker
           </label>
-        <ColorPickerController hideController = {true} selectedColor = {(color) => setColor(color)}/>
+          <ColorPickerController
+            hideController={true}
+            selectedColor={(color) => setColor(color)}
+          />
         </div>
       </div>
     </div>
