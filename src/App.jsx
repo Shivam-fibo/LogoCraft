@@ -3,12 +3,16 @@ import "./App.css";
 import BackgroundContorller from "./components/BackgroundContorller";
 import Header from "./components/Header";
 import IconController from "./components/IconController";
+import LogoPreview from "./components/LogoPreview";
 import SideNav from "./components/SideNav";
+import { UpdateStorageContext } from "./context/UpdateStorageContext";
 
 function App() {
   const[selectIndex , setSelectIndex] = useState();
+  const [updateStorage, setUpdateStorage] = useState({})
   return (
-    <>
+  
+    <UpdateStorageContext.Provider value={{updateStorage, setUpdateStorage}}>
       <Header />
       <div className="w-64 fixed">
         <SideNav selectIndex={(val) => setSelectIndex(val)} />
@@ -22,13 +26,15 @@ function App() {
         }
         </div>
         <div className="md:col-span-3 ">
+          <LogoPreview/>
         </div>
         <div className="">
           Ads Banner
         </div>
 
       </div>
-    </>
+      </UpdateStorageContext.Provider>
+    
   );
 }
 
