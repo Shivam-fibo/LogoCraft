@@ -8,7 +8,7 @@ const BackgroundContorller = () => {
   const [rounded, setRounded] = useState(0);
   const[padding, setPadding] = useState(0);
   const[color, setColor] = useState('#fff')
-  const{updateStorage, setUpdateStorage} = useContext({UpdateStorageContext})
+  const{updateStorage, setUpdateStorage} = useContext(UpdateStorageContext)
   const storageValue = JSON.parse(localStorage.getItem('value'))
 
     useEffect(() =>{
@@ -20,7 +20,7 @@ const BackgroundContorller = () => {
       }
       setUpdateStorage(updateValue)
       localStorage.setItem('value', JSON.stringify(updateValue))
-    }, [rounded, padding])
+    }, [rounded, color, padding])
   return (
     <div>
       <div className="py-2">
