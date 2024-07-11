@@ -27,6 +27,9 @@ module.exports = {
           DEFAULT: "#2E8B57",
           foreground: "hsl(var(--primary-foreground))",
         },
+        scrollbar: {
+          hide: 'scrollbar-width: none; -ms-overflow-style: none;',
+        },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",

@@ -6,13 +6,15 @@ import ColorPickerController from "./ColorPickerController";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { UpdateStorageContext } from "@/context/UpdateStorageContext";
+import IconList from "./IconList";
 
 const IconController = () => {
-  const [size, setSize] = useState(280);
-  const [rotate, setRotate] = useState(0);
-  const [color, setColor] = useState("#fff");
-  const {updateStorage, setUpdateStorage} = useContext(UpdateStorageContext)
   const storageValue = JSON.parse(localStorage.getItem('value'))
+  const [size, setSize] = useState(storageValue?storageValue?.iconSize : 280);
+  const [rotate, setRotate] = useState(storageValue?storageValue?.iconRotate:0);
+  const [color, setColor] = useState(storageValue?storageValue?.color : "#fff");
+  const {updateStorage, setUpdateStorage} = useContext(UpdateStorageContext)
+ 
   useEffect(() =>{
         const updateValue = {
           ...storageValue,
@@ -29,20 +31,14 @@ const IconController = () => {
   return (
     <div className="bg-white">
       <div>
-        <label>Icon</label>
-        <div
-          className="p-4 bg-gray-200 cursor-pointer w-[50px] h-[50px]
-           flex items-center justify-center rounded-md"
-        >
-          <Smile />
-        </div>
+       <IconList/>
         <div className="py-2">
           <label className="py-2 flex justify-between items-center">
             Size <span>{size}px</span>{" "}
           </label>
           <Slider
             className="bg-gray-100"
-            defaultValue={[280]}
+            defaultValue={[size]}
             max={512}
             step={1}
             onValueChange={(e) => setSize(e[0])}
@@ -55,7 +51,7 @@ const IconController = () => {
           </label>
           <Slider
             className="bg-gray-100"
-            defaultValue={[0]}
+            defaultValue={[rotate]}
             max={100}
             step={1}
             onValueChange={(e) => setRotate(e[0])}

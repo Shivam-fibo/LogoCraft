@@ -5,11 +5,12 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { UpdateStorageContext } from "@/context/UpdateStorageContext";
 const BackgroundContorller = () => {
-  const [rounded, setRounded] = useState(0);
-  const[padding, setPadding] = useState(0);
-  const[color, setColor] = useState('#fff')
-  const{updateStorage, setUpdateStorage} = useContext(UpdateStorageContext)
   const storageValue = JSON.parse(localStorage.getItem('value'))
+  const [rounded, setRounded] = useState(storageValue?storageValue?.bgRounded : 0);
+  const[padding, setPadding] = useState(storageValue?storageValue?.bgPadding : 0);
+  const[color, setColor] = useState(storageValue?storageValue?.bgColor : '#fff')
+  const{updateStorage, setUpdateStorage} = useContext(UpdateStorageContext)
+
 
     useEffect(() =>{
       const updateValue = {
