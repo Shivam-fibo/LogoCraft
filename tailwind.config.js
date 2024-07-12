@@ -27,9 +27,6 @@ module.exports = {
           DEFAULT: "#2E8B57",
           foreground: "hsl(var(--primary-foreground))",
         },
-        scrollbar: {
-          hide: 'scrollbar-width: none; -ms-overflow-style: none;',
-        },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
@@ -76,5 +73,20 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-hide': {
+          /* Hide scrollbar for Webkit browsers */
+          '-webkit-overflow-scrolling': 'touch',
+          'scrollbar-width': 'none', /* Firefox */
+          '-ms-overflow-style': 'none', /* IE and Edge */
+        },
+        '.scrollbar-hide::-webkit-scrollbar': {
+          display: 'none', /* Chrome, Safari, and Opera */
+        },
+      });
+    },
+  ],
+};

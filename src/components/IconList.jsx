@@ -44,9 +44,9 @@ export default function IconList() {
     <DialogHeader>
       <DialogTitle>Select your icon</DialogTitle>
       <DialogDescription>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5  overflow-auto h-[500px]">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5  overflow-auto h-[350px]">
                 {iconList.map((icon, index)=>(
-                    <div className="pt-2 size-12 ">
+                    <div className="pt-2 size-12  cursor-pointer flex rounded-sm items-center justify-center ">
                         <Icon name={icon} size = {20} color = {'#fff'}/>
                     </div>
                 ))}
