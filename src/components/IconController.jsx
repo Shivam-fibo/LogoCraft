@@ -10,28 +10,28 @@ import IconList from "./IconList";
 
 const IconController = () => {
   const storageValue = JSON.parse(localStorage.getItem('value'))
+  const [icon, setIcon] = useState(storageValue?storageValue?.icon : "smile")
   const [size, setSize] = useState(storageValue?storageValue?.iconSize : 280);
   const [rotate, setRotate] = useState(storageValue?storageValue?.iconRotate:0);
   const [color, setColor] = useState(storageValue?storageValue?.color : "#fff");
   const {updateStorage, setUpdateStorage} = useContext(UpdateStorageContext)
- 
   useEffect(() =>{
         const updateValue = {
           ...storageValue,
           iconSize: size,
           iconRotate : rotate,
           iconColor : color,
-          icon: 'Smile'
+          icon: icon
         }
         setUpdateStorage(updateValue)
         localStorage.setItem('value', JSON.stringify(updateValue ))
 
-      }, [size, rotate, color])
+      }, [size, rotate, color, icon])
 
   return (
     <div className="bg-white">
       <div>
-       <IconList/>
+       <IconList selectedIcon = {(icon) => setIcon(icon)}/>
         <div className="py-2">
           <label className="py-2 flex justify-between items-center">
             Size <span>{size}px</span>{" "}
