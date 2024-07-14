@@ -276,13 +276,6 @@ export const iconList = [
     "WifiOff",
     "Wifi",
     "Wind",
-    "XCircle",
-    "XOctagon",
-    "XSquare",
-    "X",
-    "Youtube",
-    "ZapOff",
-    "Zap",
-    "ZoomIn",
-    "ZoomOut"
+   
+   
 ];
