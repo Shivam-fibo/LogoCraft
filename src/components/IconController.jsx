@@ -52,7 +52,7 @@ const IconController = () => {
           <Slider
             className="bg-gray-100"
             defaultValue={[rotate]}
-            max={100}
+            max={360}
             step={1}
             onValueChange={(e) => setRotate(e[0])}
           />
