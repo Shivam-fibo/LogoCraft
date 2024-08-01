@@ -4,6 +4,8 @@ import ColorPickerController from "./ColorPickerController";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { UpdateStorageContext } from "@/context/UpdateStorageContext";
+
+
 const BackgroundContorller = () => {
   const storageValue = JSON.parse(localStorage.getItem('value'))
   const [rounded, setRounded] = useState(storageValue?storageValue?.bgRounded : 0);

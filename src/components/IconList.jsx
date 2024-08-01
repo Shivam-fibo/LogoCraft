@@ -40,7 +40,7 @@ export default function IconList({selectedIcon}) {
         </div>
       </div>
       <Dialog open={openDialog}>
-        <DialogTrigger>Open</DialogTrigger>
+       
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Select your icon</DialogTitle>

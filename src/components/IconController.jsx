@@ -1,4 +1,4 @@
-import { Smile } from "lucide-react";
+import { Smile, SmileIcon } from "lucide-react";
 import React from "react";
 import { Slider } from "@/components/ui/slider";
 import { useState } from "react";
@@ -10,7 +10,7 @@ import IconList from "./IconList";
 
 const IconController = () => {
   const storageValue = JSON.parse(localStorage.getItem('value'))
-  const [icon, setIcon] = useState(storageValue?storageValue?.icon : "smile")
+  const [icon, setIcon] = useState(storageValue?storageValue?.icon : SmileIcon)
   const [size, setSize] = useState(storageValue?storageValue?.iconSize : 280);
   const [rotate, setRotate] = useState(storageValue?storageValue?.iconRotate:0);
   const [color, setColor] = useState(storageValue?storageValue?.color : "#fff");

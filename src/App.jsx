@@ -8,7 +8,7 @@ import SideNav from "./components/SideNav";
 import { UpdateStorageContext } from "./context/UpdateStorageContext";
 
 function App() {
-  const [selectIndex, setSelectIndex] = useState();
+  const [selectIndex, setSelectIndex] = useState(0);
   const [updateStorage, setUpdateStorage] = useState({});
   const [downloadIcon, setDownloadIcon] = useState();
 
@@ -24,9 +24,6 @@ function App() {
         </div>
         <div className="md:col-span-3">
           <LogoPreview downloadIcon={downloadIcon} />
-        </div>
-        <div className="">
-          Ads Banner
         </div>
       </div>
     </UpdateStorageContext.Provider>

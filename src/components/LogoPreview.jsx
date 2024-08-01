@@ -9,14 +9,15 @@ export default function LogoPreview({ downloadIcon }) {
 
   useEffect(() => {
     const storageData = JSON.parse(localStorage.getItem('value'));
-    console.log(storageData);
     setStorageValue(storageData);
   }, [updateStorage]);
 
   useEffect(() => {
     if (downloadIcon) {
-      console.log("Btn is clicked")
       downloadPngLogo()
+      localStorage.removeItem('value');
+
+
     }
   }, [downloadIcon]);
 
