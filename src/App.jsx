@@ -1,19 +1,20 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import "./App.css";
 import BackgroundContorller from "./components/BackgroundContorller";
 import Header from "./components/Header";
 import IconController from "./components/IconController";
 import LogoPreview from "./components/LogoPreview";
 import SideNav from "./components/SideNav";
+import { reducer,initialState  } from "@/Reducer/reducer";
 import { UpdateStorageContext } from "./context/UpdateStorageContext";
+
 
 function App() {
   const [selectIndex, setSelectIndex] = useState(0);
-  const [updateStorage, setUpdateStorage] = useState({});
   const [downloadIcon, setDownloadIcon] = useState();
-
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <UpdateStorageContext.Provider value={{ updateStorage, setUpdateStorage }}>
+    <UpdateStorageContext.Provider value={{ state, dispatch }}>
       <Header DownloadIcon={setDownloadIcon} />
       <div className="w-64 fixed">
         <SideNav selectIndex={(val) => setSelectIndex(val)} />
