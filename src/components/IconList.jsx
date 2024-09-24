@@ -6,7 +6,6 @@ import {
 
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { icons, Smile } from "lucide-react";
 import { useState } from "react";
@@ -30,7 +29,7 @@ export default function IconList({selectedIcon}) {
   return (
     <div>
       <div>
-        <label>Icon</label>
+        <h3>Icon</h3>
         <div
           onClick={() => setOpenDialog(true)}
           className="p-4 bg-gray-200 cursor-pointer w-[50px] h-[50px]
@@ -47,7 +46,7 @@ export default function IconList({selectedIcon}) {
             <DialogDescription>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5  overflow-auto h-[350px]">
                 {iconList.map((icon, index) => (
-                  <div className="pt-2 size-12  cursor-pointer flex rounded-sm items-center justify-center " onClick = {() => {selectedIcon(icon); setOpenDialog(false); setIcon(icon)}}> 
+                  <div key={index} className="pt-2 size-12  cursor-pointer flex rounded-sm items-center justify-center " onClick = {() => {selectedIcon(icon); setOpenDialog(false); setIcon(icon)}}> 
                     <Icon name={icon} size={20} color={"#fff"} />
                   </div>
                 ))}

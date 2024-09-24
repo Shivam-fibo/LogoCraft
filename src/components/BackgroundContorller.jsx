@@ -21,6 +21,7 @@ const BackgroundContorller = () => {
         bgPadding: padding,
         bgColor : color
       }
+      console.log(updateValue)
       setUpdateStorage(updateValue)
       localStorage.setItem('value', JSON.stringify(updateValue))
     }, [rounded, color, padding])
